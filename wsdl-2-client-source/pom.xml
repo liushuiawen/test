@@ -1,0 +1,111 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.kjtpay.raoxy.test</groupId>
+  <artifactId>wsdl-2-client-source</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>wsdl-2-client-source</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <cxf.version>2.7.7</cxf.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+        <groupId>org.apache.cxf</groupId>
+        <artifactId>cxf-rt-frontend-jaxws</artifactId>
+        <version>${cxf.version}</version>
+     </dependency>
+     <dependency>
+        <groupId>org.apache.cxf</groupId>
+        <artifactId>cxf-rt-transports-http</artifactId>
+        <version>${cxf.version}</version>
+     </dependency>
+  </dependencies>
+  
+  <build>  
+        <finalName>wsdl-2-client-source</finalName>  
+        <plugins>  
+            <plugin>  
+                <groupId>org.apache.cxf</groupId>  
+                <artifactId>cxf-codegen-plugin</artifactId>  
+                <version>${cxf.version}</version>  
+                <executions>  
+                    <execution>
+                        <id>generate-sources</id>  
+                        <phase>generate-sources</phase>  
+                        <configuration>  
+                            <sourceRoot>${project.build.directory}/cxf</sourceRoot>  
+                            <wsdlOptions>  
+                                <wsdlOption>  
+                                	<!-- <wsdl>http://127.0.0.1:8080/webservice-test/hello?wsdl</wsdl> -->
+                                    <wsdl>http://192.168.180.44:8111/fos/service/FundoutFacade?wsdl</wsdl> 
+                                  <!--   <frontEnd>jaxws21</frontEnd>  
+                                    <faultSerialVersionUID>1</faultSerialVersionUID>   -->
+                                 <!--    <extraargs>  
+                                        <extraarg>-impl</extraarg>  
+                                     	<extraarg>-verbose</extraarg>  
+                                	</extraargs> -->
+                                </wsdlOption>
+                            </wsdlOptions>
+                        </configuration>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>  
+                    </execution>  
+                </executions>  
+            </plugin>  
+        </plugins>  
+        
+        
+        
+        
+        <pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.cxf</groupId>
+										<artifactId>cxf-codegen-plugin</artifactId>
+										<versionRange>[2.1.4,)</versionRange>
+										<goals>
+											<goal>wsdl2java</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+        
+        
+        
+    </build>
+    
+    
+  
+</project>
