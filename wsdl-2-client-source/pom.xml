@@ -7,6 +7,8 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
+
+
   <name>wsdl-2-client-source</name>
   <url>http://maven.apache.org</url>
 
